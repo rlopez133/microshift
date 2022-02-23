@@ -31,7 +31,7 @@ cp inventory/hosts.sample inventory/hosts
 3. Install the required Ansible Collections
 
 ```
-ansible galaxy collection install -r requirements.yml
+ansible-galaxy collection install -r requirements.yml
 ```
 
 4. Run the Ansible Playbook on the RHEL system
