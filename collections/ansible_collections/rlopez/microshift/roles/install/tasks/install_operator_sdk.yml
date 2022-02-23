@@ -1,0 +1,4 @@
+---
+- name: Install Operator Lifecycle Manager (OLM) via Operator-SDK
+  ansible.builtin.command: "operator-sdk olm install"
+
