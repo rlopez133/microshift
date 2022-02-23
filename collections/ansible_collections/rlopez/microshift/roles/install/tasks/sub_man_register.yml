@@ -6,14 +6,21 @@
       activationkey: "{{ activation_key }}"
       org_id: "{{ org_id }}"
       state: present
-      pool: '^(Red Hat Enterprise Linux Server, Standard (8 sockets) (Unlimited guests))$'
+      pool: '^(Red Hat Enterprise Linux Server, Standard (8 sockets) (Unlimited guests)|Red Hat OpenShift Container Platform, Standard (1-2 Sockets))$'
       force_register: yes
     ignore_errors: yes
 
-  - name: Enable Red Hat OpenShift Repository
+  - name: Enable Repos Configuration
+    ansible.builtin.command: "subscription-manager config --rhsm.manage_repos=1"
+
+  - name: Enable Red Hat Repos
     community.general.rhsm_repository:
-      name: rhocp-4.8-for-rhel-8-x86_64-rpms
+      name: "{{ item }}"
       state: present
+    loop:
+      - rhocp-4.10-for-rhel-8-x86_64-rpms
+      - rhel-8-for-x86_64-appstream-rpms
+      - rhel-8-for-x86_64-baseos-rpms
   become: yes
   when:
     - activation_key != ""

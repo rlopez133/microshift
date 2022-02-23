@@ -7,4 +7,6 @@
       - cri-tools
       - firewalld
       - curl
+      - make
+      - golang
   become: yes

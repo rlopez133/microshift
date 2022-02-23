@@ -2,3 +2,4 @@
 # defaults file for install
 activation_key: ""
 org_id: ""
+operator_sdk_version: "v1.17.0"
