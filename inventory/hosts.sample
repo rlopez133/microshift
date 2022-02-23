@@ -1,0 +1,16 @@
+[all:vars]
+
+###############################################################################
+# Required configuration variables for MicroShift Install                     #
+###############################################################################
+
+# (Optional) Activation-key for proper setup of subscription-manager, empty
+# value skips registration
+#activation_key=""
+
+# (Optional) Activation-key org_id for proper setup of subscription-manager,
+# empty value skips registration
+#org_id=""
+
+[microshift]
+microshift.example.com

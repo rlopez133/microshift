@@ -1,0 +1,31 @@
+---
+- name: Configure firewalld
+  block:
+    - name: Enable firewalld
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: Open ports for microshift
+      ansible.posix.firewalld:
+        port: "{{ item }}/tcp"
+        permanent: yes
+        state: enabled
+        zone: "public"
+        immediate: yes
+      loop:
+        - 80
+        - 443
+        - 5353
+        - 6443
+        - "30000-32767"
+
+    - name: Add trusted source for crio 
+      ansible.posix.firewalld:
+        source: "10.42.0.0/16"
+        zone: "trusted"
+        state: enabled
+        immediate: yes
+  become: yes
+

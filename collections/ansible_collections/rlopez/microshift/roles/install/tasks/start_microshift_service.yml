@@ -1,0 +1,13 @@
+---
+- name: Get microshift service file
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service"
+    dest: "/etc/systemd/system/microshift.service"
+  become: yes
+
+- name: Start microshift
+ ansible.builtin.service:
+   name: microshift.service
+   state: started
+   enabled: yes
+ 

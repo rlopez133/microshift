@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  ansible.builtin.package:
+    name:
+      - podman
+      - cri-o
+      - cri-tools
+      - firewalld
+      - curl
+      - firewall-cmd

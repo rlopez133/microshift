@@ -1,0 +1,20 @@
+---
+- name: Setup Subscription Manager
+  block:
+  - name: Register host via Activation key
+    community.general.redhat_subscription:
+      activationkey: "{{ activation_key }}"
+      org_id: "{{ org_id }}"
+      state: present
+      pool: '^(Red Hat Enterprise Linux Server, Standard (8 sockets) (Unlimited guests))$'
+      force_register: yes
+    ignore_errors: yes
+
+  - name: Enable Red Hat OpenShift Repository
+    community.general.rhsm_repository:
+      name: rhocp-4.8-for-rhel-8-x86_64-rpms
+      state: present
+  become: yes
+  when:
+    - activation_key != ""
+    - org_id != ""

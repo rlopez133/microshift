@@ -1,0 +1,4 @@
+collections/ansible_collections/community
+collections/ansible_collections/ansible
+collections/ansible_collections/containers
+collections/ansible_collections/rlopez/microshift/roles/install/tasks/*yml.orig

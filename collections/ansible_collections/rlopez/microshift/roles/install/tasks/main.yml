@@ -1,0 +1,9 @@
+---
+# tasks file for install
+#
+- include_tasks: sub_man_register.yml
+- include_tasks: package.yml
+- include_tasks: firewall_rules.yml
+- include_tasks: start_microshift_service.yml
+- include_tasks: get_oc_client.yml
+- include_tasks: copy_kubeconfig.yml
