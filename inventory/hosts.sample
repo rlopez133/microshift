@@ -11,6 +11,9 @@
 # (Optional) Activation-key org_id for proper setup of subscription-manager,
 # empty value skips registration
 #org_id=""
+#
+# Set the version of Operator SDK, default version: v1.17.0
+#operator_sdk_version=""
 
 [microshift]
 microshift.example.com
