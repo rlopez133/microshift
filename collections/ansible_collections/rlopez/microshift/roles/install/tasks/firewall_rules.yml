@@ -26,6 +26,7 @@
         source: "10.42.0.0/16"
         zone: "trusted"
         state: enabled
+        permanent: yes
         immediate: yes
   become: yes
 

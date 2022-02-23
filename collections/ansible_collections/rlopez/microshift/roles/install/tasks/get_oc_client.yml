@@ -10,8 +10,8 @@
 
 - name: Get the OpenShift client
   ansible.builtin.get_url:
-  url: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz"
-  dest: "{{ tempdir }}"
+    url: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz"
+    dest: "{{ tempdir }}"
 
 - name: Untar the OpenShift client
   ansible.builtin.unarchive:

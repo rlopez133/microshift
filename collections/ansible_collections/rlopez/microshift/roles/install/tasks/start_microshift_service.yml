@@ -6,8 +6,9 @@
   become: yes
 
 - name: Start microshift
- ansible.builtin.service:
-   name: microshift.service
-   state: started
-   enabled: yes
+  ansible.builtin.service:
+    name: microshift.service
+    state: started
+    enabled: yes
+  become: yes
  
