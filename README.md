@@ -16,13 +16,13 @@ Edge devices deployed out in the field pose very different operational, environm
 
 ## How to Run the Ansible Playbook on RHEL
 
-. Install Ansible on your RHEL system
+1. Install Ansible on your RHEL system
 +
 ```
 # dnf install -y ansible
 ```
 +
-. Copy the inventory/hosts.sample file to inventory/hosts and fill out the appropriate variables
+2. Copy the inventory/hosts.sample file to inventory/hosts and fill out the appropriate variables
 +
 ```
 cp inventory/hosts.sample inventory/hosts
