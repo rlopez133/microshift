@@ -7,3 +7,5 @@
 - include_tasks: start_microshift_service.yml
 - include_tasks: get_oc_client.yml
 - include_tasks: copy_kubeconfig.yml
+- include_tasks: get_operator_sdk.yml
+- include_tasks: install_operator_sdk.yml
