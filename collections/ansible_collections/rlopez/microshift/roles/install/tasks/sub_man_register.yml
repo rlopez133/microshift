@@ -1,14 +1,28 @@
 ---
 - name: Setup Subscription Manager
   block:
+
   - name: Register host via Activation key
     community.general.redhat_subscription:
       activationkey: "{{ activation_key }}"
       org_id: "{{ org_id }}"
       state: present
-      pool: '^(Red Hat Enterprise Linux Server, Standard (8 sockets) (Unlimited guests)|Red Hat OpenShift Container Platform, Standard (1-2 Sockets))$'
-      force_register: yes
-    ignore_errors: yes
+
+  - name: Find pool ID for OpenShift subscription
+    ansible.builtin.shell: "sudo subscription-manager list --available --matches '*OpenShift*' | grep Pool"
+    register: openshift_pool_id
+
+  - name: Find pool ID for RHEL subscription
+    ansible.builtin.shell: "sudo subscription-manager list --available --matches '*Red Hat Enterprise Linux Server*' | grep Pool"
+    register: rhel_pool_id
+
+  - name: Consume entitlements
+    community.general.redhat_subscription:
+      activationkey: "{{ activation_key }}"
+      org_id: "{{ org_id }}"
+      pool_ids:
+        - "{{ openshift_pool_id.stdout_lines[0] | regex_replace('Pool( )ID:( )+', '') }}"
+        - "{{ rhel_pool_id.stdout_lines[0] | regex_replace('Pool( )ID:( )+', '') }}"
 
   - name: Enable Repos Configuration
     ansible.builtin.command: "subscription-manager config --rhsm.manage_repos=1"
